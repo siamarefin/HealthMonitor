@@ -1,0 +1,120 @@
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e6e3e3;
+  border-radius: 0 0 24px 24px;
+  padding: 18px 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  gap: 18px;
+}
+
+.header-time {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #222;
+}
+.header-ampm {
+  display: block;
+  font-size: 1rem;
+  color: #888;
+  margin-top: -8px;
+}
+.header-weather {
+  font-size: 1.5rem;
+}
+.header-menu {
+  font-size: 2rem;
+  color: #888;
+  margin-left: 10px;
+}
+
+.header-center {
+  flex: 1;
+  justify-content: center;
+  gap: 10px;
+}
+.header-logo {
+  font-size: 2rem;
+  color: #111;
+  margin-right: 6px;
+}
+.header-brand {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.header-right {
+  gap: 12px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 4px 16px 4px 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.header-faqs {
+  color: #111;
+  text-decoration: solid;
+  font-weight: bold;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+.header-contactus
+{
+  color: #111;
+  font-weight: bold;
+  text-decoration: solid;
+  margin-right: 8px;
+}
+
+
+.header-settings {
+  background: #111;
+  border-radius: 50%;
+  padding: 6px;
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-mode {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #888;
+  font-size: 1rem;
+}
+.header-lightmode {
+  margin-left: 2px;
+  font-size: 0.95rem;
+  color: #bbb;
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 8px;
+  }
+  .header-center {
+    justify-content: flex-start;
+    margin: 8px 0;
+  }
+  .header-right {
+    padding: 4px 8px 4px 4px;
+  }
+}

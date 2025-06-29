@@ -1,25 +1,25 @@
-import React from "react";
+import "./styles/Navbar.css";
 
 function Navbar() {
   return (
     <nav className="navbar">
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/about">About</a>
-        </li>
-        <li>
-          <a href="/contact">Contact</a>
-        </li>
-        <li>
-          <a href="/login">Login</a>
-        </li>
-        <li>
-          <a href="/register">Register</a>
-        </li>
-      </ul>
+      <div className="navbar-btn-group">
+        <a href="/services" className="navbar-btn">
+          Services
+        </a>
+        <a href="/health-check" className="navbar-btn">
+          Health Check
+        </a>
+        <a href="/advice" className="navbar-btn">
+          Advice
+        </a>
+        <a href="/medicine" className="navbar-btn">
+          Medicine
+        </a>
+        <a href="/medicine" className="navbar-btn">
+          Contact Us
+        </a>
+      </div>
     </nav>
   );
 }
