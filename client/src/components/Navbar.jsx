@@ -20,6 +20,8 @@ function Navbar() {
           Contact Us
         </a>
       </div>
+
+      
     </nav>
   );
 }

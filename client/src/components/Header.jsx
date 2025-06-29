@@ -3,11 +3,15 @@ import "./styles/Header.css";
 
 function Header() {
   const [time, setTime] = useState(new Date());
+ 
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
+
     return () => clearInterval(timer);
   }, []);
+  
+
 
   const hours = time.getHours() % 12 || 12;
   const minutes = time.getMinutes().toString().padStart(2, "0");
@@ -22,18 +26,24 @@ function Header() {
         <span className="header-weather">
           <span role="img" aria-label="weather">🌤️</span>
         </span>
-        <span className="header-menu">&#9776;</span>
+        {/* <span className="header-menu">&#9776;</span> */}
       </div>
       <div className="header-center">
         <span className="header-logo" style={{ fontWeight: "bold", fontSize: "1.5rem" }}> </span>
-        <span className="header-brand">Health Monitor</span>
+        <span className="header-logo" style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
+          <img src="/logo1.png" alt="logo" className="logoheader"  style={{ height: "32px", verticalAlign: "middle" }} />
+        </span>
+        <span className="siteName">
+          Health Monitor
+        </span>
+       
       </div>
       <div className="header-right">
-        <a href="#faqs" className="header-faqs">LogIn</a>
+        <a href="#faqs" className="header-login">LogIn</a>
         {/* <span className="header-settings" style={{ background: "#000", borderRadius: "50%", padding: "6px", margin: "0 8px", color: "#fff" }}>⚙️</span> */}
         <span className="header-mode">
           {/* <span role="img" aria-label="moon">🌙</span> */}
-          <a href="#contactus" className="header-contactus">SignUp</a>
+          <a href="#contactus" className="header-login">SignUp</a>
         </span>
       </div>
     </header>

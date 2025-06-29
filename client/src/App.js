@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Body from "./components/Body.jsx";
 
 
 function App() {
@@ -9,11 +10,7 @@ function App() {
     <div className="App">
       <Header />
       <Navbar />
-      <div className="container">
-        {/* Main content goes here */}
-        <h1>Welcome to Health Monitor</h1>
-        <p>Your health, our priority.</p>
-      </div>
+      <Body />
       <Footer />
       
     </div>
