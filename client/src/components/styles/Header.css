@@ -8,6 +8,11 @@
   padding: 18px 32px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   font-family: "Inter", Arial, sans-serif;
+  position: fixed;      /* Make navbar fixed */
+  top: 0;               /* Stick to top */
+  left: 0;
+  width: 100%;          /* Full width */
+  z-index: 1100;        /* Stay above other elements */
 }
 
 .logoheader {

@@ -12,14 +12,15 @@ function App() {
     <Router>
       <Header />
       <Navbar />
+
+
       <Routes>
         <Route path="/" element={<Body />} />
         <Route path="/login" element={<Login />} />
-      </Routes>
-      <Routes>
-        <Route path="/" element={<Body />} />
+        {/* <Route path="/" element={<Body />} /> */}
         <Route path="/signup" element={<Signup />} />
       </Routes>
+      
       <Footer />
     </Router>
   );
