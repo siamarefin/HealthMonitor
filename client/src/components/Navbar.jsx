@@ -4,6 +4,9 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-btn-group">
+        <a href="/" className="navbar-btn">
+          Home
+        </a>
         <a href="/services" className="navbar-btn">
           Services
         </a>
