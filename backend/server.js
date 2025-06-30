@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const router = express.Router();
+// const {OAuth2Client} = require('google-auth-library');
+// const client = new OAuth2Client('295760089034-rtnvk7jcia0rhoa3m5mn2bv7fv9uq3c5.apps.googleusercontent.com');
+
 
 
 const app = express();
@@ -45,5 +48,28 @@ app.post('/api/register', async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 });
+
+// app.post('/api/google-login', async (req, res )=> {
+//     const { token, password } = req.body;
+//     try{
+//         const ticket = await client.verifyIdToken({
+//             idToken: token,
+//             audience: '295760089034-rtnvk7jcia0rhoa3m5mn2bv7fv9uq3c5.apps.googleusercontent.com',
+//         });
+
+//         const {name, email } = ticket.getPayload();
+
+//         let user = await User.findOne({email});
+//         if(!user){
+//             const hashed = await bcrypt.hash(password, 10);
+//             user = new User({ name, email, password: hashed });
+//             await user.save();
+//         }
+//         res.status(200).json({message: 'Google signup successfully'});
+
+//     } catch (err){
+//         res.status(401).json({error: 'Invalid Google token '}); 
+//     }
+// });
 
 app.listen(5000, () => console.log('Server running on port 5000 '));

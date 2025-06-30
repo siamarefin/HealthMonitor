@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./styles/Signup.css";
 
 function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
-  const [setMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,13 +21,14 @@ function Login() {
         body: JSON.stringify(form),
       });
       const data = await res.json();
-      if (res.ok) setMessage("Logged in successfully!");
-      else setMessage(data.error || "Login failed");
+      if (res.ok) {
+        setMessage("Logged in successfully!");
+        navigate("/"); // Redirect to Home page
+      } else setMessage(data.error || "Login failed");
     } catch {
       setMessage("Server Error");
     }
   };
-
 
   return (
     <div className="signup-container">
@@ -90,9 +93,7 @@ function Login() {
         </div>
         <button type="submit">Log In</button>
       </form>
-      
-      
-      
+      {message && <div className="signup-message">{message}</div>}
     </div>
   );
 }

@@ -1,3 +1,4 @@
+// import { GoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import "./styles/Signup.css";
 
@@ -26,10 +27,17 @@ function Signup() {
     }
   };
 
-  const handleGoogleSignup = () => {
-    // TODO: Integrate Google OAuth here
-    alert("Google signup coming soon!");
-  };
+  // const handleGoogleSuccess = async (credentialResponse) => {
+  //   // TODO: Integrate Google OAuth here
+  //   const res = await fetch("http://localhost:5000/api/google-login", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ token: credentialResponse.credential }),
+  //   });
+  //   const data = await res.json();
+  //   if (res.ok) setMessage("Google Signup Successful!");
+  //   else setMessage(data.error || "Google signup failed");
+  // };
 
   return (
     <div className="signup-container">
@@ -107,17 +115,11 @@ function Signup() {
           Already have an account? <a href="/login">Log In</a>
         </span>
       </div>
-      <div className="divider">
-        <span>or</span>
-      </div>
-      <button className="google-signup-btn" onClick={handleGoogleSignup}>
-        <img
-          src="google.png"
-          alt="Google logo"
-          style={{ width: 22, marginRight: 8 }}
-        />
-        Sign up with Google
-      </button>
+      
+      {/* <GoogleLogin
+        onSuccess={handleGoogleSuccess}
+        onError={() => setMessage("Google signup failed")}
+      /> */}
       {message && <div className="signup-message">{message}</div>}
     </div>
   );
