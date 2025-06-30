@@ -23,7 +23,7 @@ function Login() {
       const data = await res.json();
       if (res.ok) {
         localStorage.setItem("isLoggedIn", "true");
-        window.location.realod();
+        localStorage.setItem("userName", data.name);
         navigate("/"); // Redirect to Home page
       } else setMessage(data.error || "Login failed");
     } catch {

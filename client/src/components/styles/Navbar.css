@@ -4,7 +4,7 @@
   padding: 20px 0;
   background: #fff;
   position: fixed;      /* Make navbar fixed */
-  top: 70px;               /* Stick to top */
+  top: 80px;               /* Stick to top */
   left: 0;
   width: 100%;          /* Full width */
   z-index: 1000;        /*Stay above other elements*/

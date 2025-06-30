@@ -69,7 +69,7 @@ app.post('/api/register', async (req, res) => {
         const user = new User ({name, email, password: hashed}) ;
         await user.save();
 
-        res.status(201).json({ message: "User registered successfully" });
+        res.status(200).json({ message: 'Login successful', name: user.name });
 
     } catch (err){
         res.status(500).json({ error: "Server error" });

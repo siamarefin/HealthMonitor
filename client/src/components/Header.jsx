@@ -5,6 +5,7 @@ import "./styles/Header.css";
 function Header() {
   const [time, setTime] = useState(new Date());
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,12 +16,16 @@ function Header() {
   useEffect(() => {
     // Check login status from localStorage
     setIsLoggedIn(!!localStorage.getItem("isLoggedIn"));
+    setUserName(!!localStorage.getItem("userName"));
   }, []);
 
+
   const handlLogout = () => {
+    localStorage.removeItem("userName");
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
-    navigate("/login");
+    setUserName("");
+    navigate("/");
   };
 
   const hours = time.getHours() % 12 || 12;
@@ -63,6 +68,18 @@ function Header() {
       <div className="header-right">
         {isLoggedIn ? (
           <div className="profile-menu">
+            {userName && (
+              <div
+                style={{
+                  fontWeight: "bold",
+                  marginBottom: 4,
+                  textAlign: "center",
+                }}
+              >
+                {userName}
+              </div>
+            )}
+
             <img
               src="/logo1.png"
               alt="Profile"
