@@ -22,7 +22,8 @@ function Login() {
       });
       const data = await res.json();
       if (res.ok) {
-        setMessage("Logged in successfully!");
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.realod();
         navigate("/"); // Redirect to Home page
       } else setMessage(data.error || "Login failed");
     } catch {
