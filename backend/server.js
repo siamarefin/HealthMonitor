@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
+const router = express.Router();
+
 
 const app = express();
 app.use(cors());
@@ -28,11 +30,19 @@ app.post('/api/register', async (req, res) => {
     const {name, email, password} = req.body;
     const hashed = await bcrypt.hash(password,10);
     try{
-        const user = new User({name , email , password:hashed});
+        const existingUser = await User.findOne({email});
+        if(existingUser){
+            return res.status(400).json({error: "Email already registered" });
+
+        }
+
+        const user = new User ({name, email, password: hashed}) ;
         await user.save();
-        res.json({message:"User registered"});
+
+        res.status(201).json({ message: "User registered successfully" });
+
     } catch (err){
-        res.status(400).json({error: " Email already Exists"});
+        res.status(500).json({ error: "Server error" });
     }
 });
 
