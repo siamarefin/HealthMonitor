@@ -28,6 +28,33 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+app.post('/api/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ error: 'User not found' });
+        }
+
+        if (!user.password) {
+            return res.status(400).json({ error: 'This is a Google account. Please use Google login or set a password.' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.status(400).json({ error: 'Incorrect password' });
+        }
+
+        res.status(200).json({ message: 'Login successful' });
+
+    } catch (err) {
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
 // Register route 
 app.post('/api/register', async (req, res) => {
     const {name, email, password} = req.body;

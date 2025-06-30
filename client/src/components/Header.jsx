@@ -1,14 +1,24 @@
 import { useEffect, useState } from "react";
 import "./styles/Header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
   const [time, setTime] = useState(new Date());
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+
+  useEffect(() => {
+    // Check login status from localStorage
+    setIsLoggedIn(!!localStorage.getItem("isLoggedIn"));
+  },[]);
+
+
 
   const hours = time.getHours() % 12 || 12;
   const minutes = time.getMinutes().toString().padStart(2, "0");
