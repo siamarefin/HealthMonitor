@@ -17,11 +17,10 @@ const {spawn } = require('child_process');
 
 
 
-// conntect to mongoDB
-mongoose.connect('mongodb+srv://siam12:uWlfNq2Z8gdFmYNd@cluster0.qxwljgq.mongodb.net/healthMonitor?retryWrites=true&w=majority&appName=Cluster0',{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+// connect to mongoDB
+mongoose.connect('mongodb+srv://siam12:uWlfNq2Z8gdFmYNd@cluster0.qxwljgq.mongodb.net/healthMonitor?retryWrites=true&w=majority&appName=Cluster0')
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 // use schema 
 
@@ -132,24 +131,23 @@ app.post('/api/predict', async(req,res) => {
     }
 });
 
-
 app.post('/api/feedback', async (req, res) => {
     const { email, feedback, age } = req.body;
+    console.log("Received feedback:", req.body);
     try {
-        // Optionally, check if email exists in User collection
+        // Check if email exists in User collection
         const user = await User.findOne({ email });
         if (!user) {
+            console.error('Feedback error: User email not found:', email);
             return res.status(400).json({ error: "User email not found" });
         }
         await Feedback.create({ email, feedback, age });
         res.status(200).json({ message: "Feedback submitted" });
     } catch (err) {
+        console.error("Feedback error:", err);
         res.status(500).json({ error: "Failed to submit feedback" });
     }
 });
-
-
-
 
 
 

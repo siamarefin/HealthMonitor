@@ -64,3 +64,20 @@
   margin-top: 1em;
   text-align: center;
 }
+
+.contactus-container input[type="email"] {
+  width: 100%;
+  padding: 0.7em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  margin-bottom: 1em;
+  box-sizing: border-box;
+  background: #fff;
+  transition: border 0.2s;
+}
+
+.contactus-container input[type="email"]:focus {
+  border: 1.5px solid #1976d2;
+  outline: none;
+}

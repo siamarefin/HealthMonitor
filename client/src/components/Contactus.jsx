@@ -2,8 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import "./styles/Contactus.css";
 
-const Contactus = ({ userEmail }) => {
-  const [form, setForm] = useState({ feedback: "", age: "" });
+const Contactus = () => {
+  const [form, setForm] = useState({ email: "", feedback: "", age: "" });
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
@@ -16,22 +16,35 @@ const Contactus = ({ userEmail }) => {
 
     setSuccess("");
     setError("");
+
     try {
       await axios.post("/api/feedback", {
-        email: userEmail,
+        email: form.email,
         feedback: form.feedback,
         age: form.age,
       });
+      console.log("userEmail:", form.email);
       setSuccess("Thank you for your feedback!");
-      setForm({ feedback: "", age: "" });
+      setForm({ email: "", feedback: "", age: "" });
     } catch (err) {
       setError("Failed to submit feedback. Please try again.");
+      console.log(err.response?.data || err.message);
     }
   };
   return (
     <div className="contactus-container">
       <h2>Contact Us / Feedback</h2>
       <form onSubmit={handleSubmit}>
+        <div>
+          <label>Your Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <div>
           <label>Your Feedback or Question:</label>
           <textarea
