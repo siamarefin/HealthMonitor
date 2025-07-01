@@ -16,6 +16,7 @@ const {spawn } = require('child_process');
 
 
 
+
 // conntect to mongoDB
 mongoose.connect('mongodb+srv://siam12:uWlfNq2Z8gdFmYNd@cluster0.qxwljgq.mongodb.net/healthMonitor?retryWrites=true&w=majority&appName=Cluster0',{
     useNewUrlParser: true,
@@ -30,7 +31,16 @@ const userSchema = new mongoose.Schema({
     password: String,
 });
 
+// Feedback schema: email references user, feedback text, age, and timestamp
+const feedbackSchema = new mongoose.Schema({
+    email: { type: String, required: true }, // Store user's email from userSchema
+    feedback: { type: String, required: true },
+    age: { type: Number, required: true },
+    createdAt: { type: Date, default: Date.now } // Store real-time submission time
+});
+
 const User = mongoose.model('User', userSchema);
+const Feedback = mongoose.model('Feedback', feedbackSchema);
 
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
@@ -121,6 +131,23 @@ app.post('/api/predict', async(req,res) => {
         res.status(500).json({error:'Prediction service error'});
     }
 });
+
+
+app.post('/api/feedback', async (req, res) => {
+    const { email, feedback, age } = req.body;
+    try {
+        // Optionally, check if email exists in User collection
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ error: "User email not found" });
+        }
+        await Feedback.create({ email, feedback, age });
+        res.status(200).json({ message: "Feedback submitted" });
+    } catch (err) {
+        res.status(500).json({ error: "Failed to submit feedback" });
+    }
+});
+
 
 
 

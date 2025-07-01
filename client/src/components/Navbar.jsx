@@ -7,9 +7,9 @@ function Navbar() {
         <a href="/" className="navbar-btn">
           Home
         </a>
-        <a href="/services" className="navbar-btn">
+        {/* <a href="/services" className="navbar-btn">
           Services
-        </a>
+        </a> */}
         <a href="/health-check" className="navbar-btn">
           Health Check
         </a>
@@ -19,7 +19,7 @@ function Navbar() {
         <a href="/medicine" className="navbar-btn">
           Medicine
         </a>
-        <a href="/medicine" className="navbar-btn">
+        <a href="/contactus" className="navbar-btn">
           Contact Us
         </a>
       </div>
