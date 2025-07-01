@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import "./styles/Contactus.css";
+import "./styles/Feedback.css";
 
 const Contactus = () => {
   const [form, setForm] = useState({ email: "", feedback: "", age: "" });
@@ -33,7 +33,7 @@ const Contactus = () => {
   };
   return (
     <div className="contactus-container">
-      <h2>Contact Us / Feedback</h2>
+      <h2>Feedback</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Your Email:</label>

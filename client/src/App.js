@@ -6,7 +6,7 @@ import HealthCheck from "./components/HealthCheck.jsx";
 import Login from "./components/Login.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Signup from "./components/Signup.jsx";
-import Contactus from "./components/Contactus.jsx";
+import Contactus from "./components/Feedback.jsx";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/health-check" element={<HealthCheck /> } /> 
-        <Route path="/contactus" element = {<Contactus />} />
+        <Route path="/Feedback" element = {<Contactus />} />
       </Routes>
       <Footer />
     </Router>
