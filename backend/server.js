@@ -12,6 +12,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const {spawn } = require('child_process');
+
+
+
 // conntect to mongoDB
 mongoose.connect('mongodb+srv://siam12:uWlfNq2Z8gdFmYNd@cluster0.qxwljgq.mongodb.net/healthMonitor?retryWrites=true&w=majority&appName=Cluster0',{
     useNewUrlParser: true,
@@ -102,6 +106,21 @@ app.post('/api/register', async (req, res) => {
 //     }
 // });
 
+const axios = require('axios');
+
+app.post('/api/predict', async(req,res) => {
+    try{
+        const py = await axios.post(
+            'http://localhost:8000/predict',
+            req.body,
+            { headers: { 'Content-Type': 'application/json' } }
+        );
+        res.json(py.data);
+    } catch(err){
+        console.error('Prediction service error:', err.message);
+        res.status(500).json({error:'Prediction service error'});
+    }
+});
 
 
 

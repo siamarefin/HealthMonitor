@@ -6,6 +6,7 @@
   background: #fff;
   min-height: 100vh;
   box-sizing: border-box;
+  margin: 150px auto 100px auto;
 }
 
 .body-left {

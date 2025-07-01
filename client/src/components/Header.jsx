@@ -68,7 +68,7 @@ function Header() {
         {isLoggedIn ? (
           <div className="profile">
             <div className="header-login">
-            <button>{userName && <div> {userName} </div>}</button>
+            {userName && <div> {userName} </div>}
 
             </div>
 
