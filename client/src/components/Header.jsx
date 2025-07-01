@@ -16,9 +16,9 @@ function Header() {
   useEffect(() => {
     // Check login status from localStorage
     setIsLoggedIn(!!localStorage.getItem("isLoggedIn"));
-    setUserName(!!localStorage.getItem("userName"));
+    setUserName(localStorage.getItem("userName") || "");
+    // localStorage.setItem("userName", data.name);
   }, []);
-
 
   const handlLogout = () => {
     localStorage.removeItem("userName");
@@ -43,7 +43,6 @@ function Header() {
             🌤️
           </span>
         </span>
-        {/* <span className="header-menu">&#9776;</span> */}
       </div>
       <div className="header-center">
         <span
@@ -67,35 +66,16 @@ function Header() {
       </div>
       <div className="header-right">
         {isLoggedIn ? (
-          <div className="profile-menu">
-            {userName && (
-              <div
-                style={{
-                  fontWeight: "bold",
-                  marginBottom: 4,
-                  textAlign: "center",
-                }}
-              >
-                {userName}
-              </div>
-            )}
+          <div className="profile">
+            <div className="header-login">
+            <button>{userName && <div> {userName} </div>}</button>
 
-            <img
-              src="/logo1.png"
-              alt="Profile"
-              className="profile-logo"
-              style={{
-                height: "32px",
-                width: "32px",
-                borderRadius: "50%",
-                cursor: "pointer",
-              }}
-              title="Profile"
-            />
+            </div>
+
             <button
               onClick={handlLogout}
               className="header-login"
-              style={{ marginLeft: 10 }}
+              // style={{ marginLeft: 10 }}
             >
               Logout
             </button>

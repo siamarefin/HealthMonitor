@@ -48,7 +48,10 @@ app.post('/api/login', async (req, res) => {
             return res.status(400).json({ error: 'Incorrect password' });
         }
 
-        res.status(200).json({ message: 'Login successful' });
+        res.status(200).json({ 
+            name: user.name,
+            email: user.email,
+         });
 
     } catch (err) {
         res.status(500).json({ error: 'Server error' });
@@ -98,5 +101,13 @@ app.post('/api/register', async (req, res) => {
 //         res.status(401).json({error: 'Invalid Google token '}); 
 //     }
 // });
+
+
+
+
+
+
+
+
 
 app.listen(5000, () => console.log('Server running on port 5000 '));
