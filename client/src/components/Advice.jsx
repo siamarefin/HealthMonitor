@@ -5,7 +5,10 @@ import "./styles/Advice.css";
 
 const Advice = () => {
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi! Ask me anything about your health." },
+    {
+      sender: "bot",
+      text: "**Assalamu Alaikum!** I am your Personal **Doctor**. Ask me anything about your health.",
+    },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -42,10 +45,7 @@ const Advice = () => {
   return (
     <div className="advice-chat-outer">
       <div className="advice-chat-inner">
-        <div className="advice-chat-header">
-          {/* <img src="/doctor1.png" alt="Doctor" className="advice-chat-avatar" />
-          <span className="advice-chat-title">Health Advice Chat</span> */}
-        </div>
+        <div className="advice-chat-header"></div>
 
         <div className="advice-chat-box">
           {messages.map((msg, idx) => (
