@@ -4,11 +4,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .advice-chat-inner {
   width: 100%;
-  max-width: 780px;
+  max-width: 880px;
   min-width: 380px;
   background: #fff;
   /* border-radius: 18px; */
@@ -19,7 +23,6 @@
   height: 70vh;
   min-height: 520px;
   position: relative;
-  
 }
 
 .advice-chat-header {
@@ -53,18 +56,19 @@
   gap: 10px;
   background: #fff;
   scrollbar-width: none;
-  -ms-overflow-style:none;
+  -ms-overflow-style: none;
 }
 
 .advice-chat-message {
-  max-width: 75%;
-  padding: 12px 18px;
+  width: 50%;
+  padding: 14px 18px;
   border-radius: 18px;
   font-size: 1.05em;
   word-break: break-word;
   margin-bottom: 2px;
-  display: inline-block;
+  display: block;
   line-height: 1.5;
+  box-sizing: border-box;
 }
 
 .advice-chat-message.user {
@@ -75,10 +79,18 @@
   border-top-right-radius: 18px;
   border-top-left-radius: 18px;
   border-bottom-left-radius: 18px;
+  max-width: 75%;
+  width: fit-content;
+  text-align: left;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .advice-chat-message.bot {
-  align-self: stretch;
+  align-self: flex-start;
+  text-align: left;
   width: 100%;
   background: #ffffff;
   color: #222;
@@ -87,6 +99,10 @@
   border-top-left-radius: 18px;
   border-bottom-right-radius: 18px;
   box-sizing: border-box;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .advice-chat-form {
@@ -96,8 +112,8 @@
   border-top: none;
   background: #fff;
   position: fixed;
-  left: 25%;
-  right: 25%;
+  left: 22%;
+  right: 20%;
   bottom: 0;
   z-index: 2;
 }
@@ -116,7 +132,7 @@
 .advice-chat-send {
   padding: 0 18px;
   border-radius: 12px;
-  background: #1976d2;
+  background: #969797;
   color: #fff;
   border: none;
   font-weight: bold;
@@ -130,5 +146,5 @@
   cursor: not-allowed;
 }
 .advice-chat-box::-webkit-scrollbar {
-  display: none;              /* Chrome, Safari, Opera */
+  display: none; /* Chrome, Safari, Opera */
 }

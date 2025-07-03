@@ -52,7 +52,7 @@ class ChatRequest(BaseModel):
 async def chat_endpoint(request: ChatRequest):
     try:
         user_message = request.message.strip()
-        prompt = f" Suppose you are my doctor , i will tell my problem or about disease you just advice me , use several para to answer,   : {user_message}"
+        prompt = f" Suppose you are my doctor , i will tell my problem or about disease you just advice me , use several para, bold , headline to answer,   : {user_message}"
         response = model.invoke([{"role": "user", "content": prompt}])
         response_text = response.text()
         print(f"💬 gemini: {response_text}")

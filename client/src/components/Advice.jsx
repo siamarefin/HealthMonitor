@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import "./styles/Advice.css";
 
 const Advice = () => {
@@ -10,7 +11,6 @@ const Advice = () => {
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
 
-  // Scroll to bottom on new message
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
@@ -46,6 +46,7 @@ const Advice = () => {
           {/* <img src="/doctor1.png" alt="Doctor" className="advice-chat-avatar" />
           <span className="advice-chat-title">Health Advice Chat</span> */}
         </div>
+
         <div className="advice-chat-box">
           {messages.map((msg, idx) => (
             <div
@@ -56,14 +57,13 @@ const Advice = () => {
                   : "advice-chat-message bot"
               }
             >
-              {msg.text}
+              <ReactMarkdown>{msg.text}</ReactMarkdown>
             </div>
           ))}
-          {loading && (
-            <div className="advice-chat-message bot">Typing...</div>
-          )}
+          {loading && <div className="advice-chat-message bot">Typing...</div>}
           <div ref={chatEndRef} />
         </div>
+
         <form className="advice-chat-form" onSubmit={handleSend}>
           <input
             type="text"
@@ -79,7 +79,9 @@ const Advice = () => {
             className="advice-chat-send"
             disabled={loading || !input.trim()}
           >
-            <span role="img" aria-label="Send">➤</span>
+            <span role="img" aria-label="Send">
+              ➤
+            </span>
           </button>
         </form>
       </div>
