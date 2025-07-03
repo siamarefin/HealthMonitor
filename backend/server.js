@@ -40,6 +40,9 @@ const feedbackSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 const Feedback = mongoose.model('Feedback', feedbackSchema);
+const multer = require('multer');
+const FormData = require('form-data');
+const fs = require('fs');
 
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
@@ -164,6 +167,10 @@ app.post('/api/advice', async (req, res) => {
         res.status(500).json({ error: "Failed to get advice" });
     }
 });
+
+
+
+
 
 
 

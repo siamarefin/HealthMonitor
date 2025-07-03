@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar.jsx";
 import Signup from "./components/Signup.jsx";
 import Feedback from "./components/Feedback.jsx";
 import Advice from "./components/Advice.jsx";
+import Prescription from "./components/Prescription.jsx";
+
 
 function AppContent() {
   const location = useLocation();
@@ -22,8 +24,10 @@ function AppContent() {
         <Route path="/health-check" element={<HealthCheck /> } /> 
         <Route path="/feedback" element = {<Feedback />} />
         <Route path="/advice" element = {<Advice /> } />
+        <Route path="/prescription" element = {<Prescription />} />
       </Routes>
-      {location.pathname !== "/advice" && <Footer />}
+      {location.pathname !== "/advice" && location.pathname !== "/Prescription"
+      && <Footer />}
     </>
   );
 }

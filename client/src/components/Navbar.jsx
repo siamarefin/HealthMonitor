@@ -16,8 +16,8 @@ function Navbar() {
         <a href="/advice" className="navbar-btn">
           Advice
         </a>
-        <a href="/medicine" className="navbar-btn">
-          Medicine
+        <a href="/Prescription" className="navbar-btn">
+          Prescription
         </a>
         <a href="/feedback" className="navbar-btn">
           Feedback

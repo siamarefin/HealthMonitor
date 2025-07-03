@@ -3,7 +3,7 @@
 #install packages
 
 ```
-npm install express mongoose cors bcryptjs react-router-dom google-auth-library axios
+npm install express mongoose cors bcryptjs react-router-dom google-auth-library axios multer form-data
 ```
 
 # backend run
