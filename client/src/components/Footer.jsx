@@ -4,7 +4,7 @@ import './styles/Footer.css';
 function Footer() {
   return (
     <footer className="footer">
-      <p>&copy; 2023 Health Monitor. All rights reserved.</p>
+      <p>&copy; 2025 Health Monitor. All rights reserved.</p>
       <p>Developed by Siam Arefin</p>
     </footer>
   );
