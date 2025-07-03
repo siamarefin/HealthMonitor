@@ -151,6 +151,22 @@ app.post('/api/feedback', async (req, res) => {
 
 
 
+app.post('/api/advice', async (req, res) => {
+    try {
+        const fastapiRes = await axios.post(
+            'http://localhost:8000/advice',
+            { message: req.body.question },
+            { headers: { 'Content-Type': 'application/json' } }
+        );
+        res.json({ answer: fastapiRes.data.response });
+    } catch (err) {
+        console.error("Advice API proxy error:", err.message, err.response?.data);
+        res.status(500).json({ error: "Failed to get advice" });
+    }
+});
+
+
+
 
 
 

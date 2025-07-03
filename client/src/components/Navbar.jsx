@@ -19,7 +19,7 @@ function Navbar() {
         <a href="/medicine" className="navbar-btn">
           Medicine
         </a>
-        <a href="/Feedback" className="navbar-btn">
+        <a href="/feedback" className="navbar-btn">
           Feedback
         </a>
       </div>

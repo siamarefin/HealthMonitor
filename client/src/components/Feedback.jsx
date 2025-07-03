@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import "./styles/Feedback.css";
 
-const Contactus = () => {
+const Feedback = () => {
   const [form, setForm] = useState({ email: "", feedback: "", age: "" });
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -72,4 +72,4 @@ const Contactus = () => {
   );
 };
 
-export default Contactus;
+export default Feedback;

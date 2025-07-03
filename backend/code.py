@@ -3,6 +3,8 @@ from pydantic import BaseModel
 import pandas as pd
 import joblib
 import os
+from langchain.chat_models import init_chat_model
+from dotenv import load_dotenv
 
 app = FastAPI()
 
@@ -29,3 +31,32 @@ async def predict_api(data: PredictRequest):
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}")
+    
+
+
+
+
+# Load environment variables
+load_dotenv()
+
+# Set up Gemini API key from .env
+os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_API_KEY", "")
+
+# Set up Gemini chat model (no tools)
+model = init_chat_model("gemini-2.0-flash", model_provider="google_genai")
+
+class ChatRequest(BaseModel):
+    message: str
+
+@app.post("/advice")
+async def chat_endpoint(request: ChatRequest):
+    try:
+        user_message = request.message.strip()
+        prompt = f" Suppose you are my doctor , i will tell my problem or about disease you just advice me , use several para to answer,   : {user_message}"
+        response = model.invoke([{"role": "user", "content": prompt}])
+        response_text = response.text()
+        print(f"💬 gemini: {response_text}")
+        return {"response": response_text}
+    except Exception as e:
+        print(f"❌ Server error: {e}")
+        return {"error": str(e)}

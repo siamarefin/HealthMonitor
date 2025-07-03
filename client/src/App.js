@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
 import Body from "./components/Body.jsx";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
@@ -6,11 +6,13 @@ import HealthCheck from "./components/HealthCheck.jsx";
 import Login from "./components/Login.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Signup from "./components/Signup.jsx";
-import Contactus from "./components/Feedback.jsx";
+import Feedback from "./components/Feedback.jsx";
+import Advice from "./components/Advice.jsx";
 
-function App() {
+function AppContent() {
+  const location = useLocation();
   return (
-    <Router>
+    <>
       <Header />
       <Navbar />
       <Routes>
@@ -18,9 +20,18 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/health-check" element={<HealthCheck /> } /> 
-        <Route path="/Feedback" element = {<Contactus />} />
+        <Route path="/feedback" element = {<Feedback />} />
+        <Route path="/advice" element = {<Advice /> } />
       </Routes>
-      <Footer />
+      {location.pathname !== "/advice" && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
