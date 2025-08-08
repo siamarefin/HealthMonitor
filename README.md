@@ -5,6 +5,13 @@
 ```
 npm install express mongoose cors bcryptjs react-router-dom google-auth-library axios multer form-data
 ```
+# cd backend 
+
+```
+python3 -m venv myenv
+source myenv/bin/activate
+```
+
 
 # backend run
 
@@ -28,7 +35,7 @@ uvicorn code:app --reload --port 8000
 # pip install backend
 
 ```
-pip install fastapi pydantic uvicorn joblib pandas
+pip install fastapi pydantic uvicorn joblib pandas, langchain python-dotenv fastapi pymupdf
 ```
 
 # client install
