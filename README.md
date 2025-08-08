@@ -35,7 +35,7 @@ uvicorn code:app --reload --port 8000
 # pip install backend
 
 ```
-pip install fastapi pydantic uvicorn joblib pandas langchain python-dotenv fastapi pymupdf xgboost
+pip install fastapi pydantic uvicorn joblib pandas langchain python-dotenv fastapi pymupdf xgboost langchain-google-genai python-multipart
 ```
 
 # client install
